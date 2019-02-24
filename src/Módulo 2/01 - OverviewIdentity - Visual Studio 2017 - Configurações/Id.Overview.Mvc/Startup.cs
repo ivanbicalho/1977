@@ -41,9 +41,9 @@ namespace Id.Overview.Mvc
                     options.Password.RequireDigit = true;
                     options.Password.RequiredLength = 6;
                     options.Password.RequiredUniqueChars = 1;
-                    options.Password.RequireLowercase = true;
-                    options.Password.RequireUppercase = true;
-                    options.Password.RequireNonAlphanumeric = true;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireUppercase = false;
+                    options.Password.RequireNonAlphanumeric = false;
 
                     //SignIn
                     options.SignIn.RequireConfirmedEmail = false;
