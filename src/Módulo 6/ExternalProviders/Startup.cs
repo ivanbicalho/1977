@@ -35,48 +35,48 @@ namespace ExternalProviders
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddAuthentication().AddFacebook(facebookOptions =>
-            {
-                facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
-                facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+            //services.AddAuthentication().AddFacebook(facebookOptions =>
+            //{
+            //    facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
+            //    facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
 
-                facebookOptions.Scope.Add("user_birthday");
+            //    facebookOptions.Scope.Add("user_birthday");
 
-                facebookOptions.ClaimActions.MapJsonKey(ClaimTypes.Locality, "locale");
+            //    facebookOptions.ClaimActions.MapJsonKey(ClaimTypes.Locality, "locale");
 
-                facebookOptions.SaveTokens = true;
-            })
-            .AddGoogle(googleOptions =>
-            {
-                googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
+            //    facebookOptions.SaveTokens = true;
+            //})
+            //.AddGoogle(googleOptions =>
+            //{
+            //    googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
 
-                googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+            //    googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
 
-                googleOptions.SaveTokens = true;
-            }).
-            AddTwitter(twitterOptions => {
-                twitterOptions.ConsumerKey = Configuration["Authentication:Twitter:ConsumerKey"];
-                twitterOptions.ConsumerSecret = Configuration["Authentication:Twitter:ConsumerSecret"];
+            //    googleOptions.SaveTokens = true;
+            //}).
+            //AddTwitter(twitterOptions => {
+            //    twitterOptions.ConsumerKey = Configuration["Authentication:Twitter:ConsumerKey"];
+            //    twitterOptions.ConsumerSecret = Configuration["Authentication:Twitter:ConsumerSecret"];
 
-                twitterOptions.SaveTokens = true;
+            //    twitterOptions.SaveTokens = true;
 
-                twitterOptions.RetrieveUserDetails = true;
+            //    twitterOptions.RetrieveUserDetails = true;
 
-                twitterOptions.ClaimActions.MapJsonKey(ClaimTypes.Email, "email", ClaimValueTypes.Email);
-            })
-            .AddMicrosoftAccount(maoptions => {
-                maoptions.ClientId = Configuration["Authentication:Microsoft:ClientId"];
-                maoptions.ClientSecret = Configuration["Authentication:Microsoft:ClientSecret"];
+            //    twitterOptions.ClaimActions.MapJsonKey(ClaimTypes.Email, "email", ClaimValueTypes.Email);
+            //})
+            //.AddMicrosoftAccount(maoptions => {
+            //    maoptions.ClientId = Configuration["Authentication:Microsoft:ClientId"];
+            //    maoptions.ClientSecret = Configuration["Authentication:Microsoft:ClientSecret"];
 
-                maoptions.SaveTokens = true;
-            })
-            .AddLinkedIn(linkedinOptions =>
-            {
-                linkedinOptions.ClientId = Configuration["Authentication:Linkedin:ClientId"];
-                linkedinOptions.ClientSecret = Configuration["Authentication:Linkedin:ClientSecret"];
+            //    maoptions.SaveTokens = true;
+            //})
+            //.AddLinkedIn(linkedinOptions =>
+            //{
+            //    linkedinOptions.ClientId = Configuration["Authentication:Linkedin:ClientId"];
+            //    linkedinOptions.ClientSecret = Configuration["Authentication:Linkedin:ClientSecret"];
 
-                linkedinOptions.SaveTokens = true;
-            });
+            //    linkedinOptions.SaveTokens = true;
+            //});
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();

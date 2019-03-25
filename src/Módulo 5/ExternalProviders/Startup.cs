@@ -40,35 +40,34 @@ namespace ExternalProviders
                 facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
                 facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
 
-                facebookOptions.Scope.Add("user_birthday");
+                //facebookOptions.Scope.Add("user_birthday");
 
                 facebookOptions.ClaimActions.MapJsonKey(ClaimTypes.Locality, "locale");
 
                 facebookOptions.SaveTokens = true;
             })
-            .AddGoogle(googleOptions =>
+            //.AddGoogle(googleOptions =>
+            //{
+            //    googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
+            //    googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+
+            //    googleOptions.SaveTokens = true;
+            //}).
+            //AddTwitter(twitterOptions =>
+            //{
+            //    twitterOptions.ConsumerKey = Configuration["Authentication:Twitter:ConsumerKey"];
+            //    twitterOptions.ConsumerSecret = Configuration["Authentication:Twitter:ConsumerSecret"];
+
+            //    twitterOptions.SaveTokens = true;
+            //    twitterOptions.RetrieveUserDetails = true;
+            //    twitterOptions.ClaimActions.MapJsonKey(ClaimTypes.Email, "email", ClaimValueTypes.Email);
+            //})
+            .AddMicrosoftAccount(maoptions =>
             {
-                googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
+                 maoptions.ClientId = Configuration["Authentication:Microsoft:ClientId"];
+                 maoptions.ClientSecret = Configuration["Authentication:Microsoft:ClientSecret"];
 
-                googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
-
-                googleOptions.SaveTokens = true;
-            }).
-            AddTwitter(twitterOptions => {
-                twitterOptions.ConsumerKey = Configuration["Authentication:Twitter:ConsumerKey"];
-                twitterOptions.ConsumerSecret = Configuration["Authentication:Twitter:ConsumerSecret"];
-
-                twitterOptions.SaveTokens = true;
-
-                twitterOptions.RetrieveUserDetails = true;
-
-                twitterOptions.ClaimActions.MapJsonKey(ClaimTypes.Email, "email", ClaimValueTypes.Email);
-            })
-            .AddMicrosoftAccount(maoptions => {
-                maoptions.ClientId = Configuration["Authentication:Microsoft:ClientId"];
-                maoptions.ClientSecret = Configuration["Authentication:Microsoft:ClientSecret"];
-
-                maoptions.SaveTokens = true;
+                 maoptions.SaveTokens = true;
             })
             .AddLinkedIn(linkedinOptions =>
             {
